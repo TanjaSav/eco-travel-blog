@@ -15,7 +15,6 @@ const nav = [
 export function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const isHomePage = pathname === "/";
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -25,21 +24,15 @@ export function Header() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header
-      className={
-        isHomePage
-          ? "absolute left-0 top-0 z-20 w-full border-b border-[#7FA091] bg-transparent"
-          : "relative z-20 border-b border-[#7FA091] bg-[#F5F7F4]"
-      }
-    >
+    <header className="relative z-20 border-b border-[#7FA091] bg-[#F5F7F4]">
       <div className="container-main flex h-16 items-center justify-between">
         <Link href="/" onClick={closeMenu}>
           <Image
             src="/images/Logo.svg"
             alt="EcoTravelBlog Logo"
-            width={160}
-            height={28}
-            className="h-4.5 w-auto md:h-5.25 md:w-auto"
+            width={181}
+            height={30}
+            className="h-6 w-auto sm:h-7.5 sm:w-45.25"
           />
         </Link>
 
@@ -67,24 +60,24 @@ export function Header() {
           className="flex h-10 w-10 items-center justify-center md:hidden"
         >
           <Image
-            src={isOpen ? "/images/Close.svg" : "/images/Menu.svg"}
+            src={isOpen ? "/images/escape.svg" : "/images/hamburgerMenu.svg"}
             alt={isOpen ? "Close menu" : "Open menu"}
             width={24}
             height={24}
-            className="h-6 w-6 cursor-pointer"
+            className="h-6 w-6"
           />
         </button>
       </div>
 
       {isOpen && (
         <div className="border-t border-[#7FA091] bg-[#F5F7F4] md:hidden">
-          <nav className="container-main flex flex-col items-center text-center py-4">
+          <nav className="container-main flex flex-col items-center py-4 text-center">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className={`${playfair.className} py-3 text-[16px] text-center leading-5 ${
+                className={`${playfair.className} py-3 text-center text-[16px] leading-5 ${
                   isActive(item.href)
                     ? "font-bold text-[#1D604B]"
                     : "font-medium text-[#171D16]"

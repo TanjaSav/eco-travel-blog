@@ -3,27 +3,35 @@ import Image from "next/image";
 import { createClient } from "@/prismicio";
 import { playfair, inter } from "@/fonts";
 
-export default async function Home() {
+type FeaturedArticlesProps = {
+  title?: string;
+  limit?: number;
+};
+
+export default async function FeaturedArticles({
+  title = "Featured Articles",
+  limit,
+}: FeaturedArticlesProps) {
   const client = createClient();
 
   const articles = await client.getAllByType("article", {
     orderings: [{ field: "my.article.published_at", direction: "desc" }],
   });
 
-  const featuredArticles = articles.filter(
-    (article: any) => article.data.is_featured === true
-  );
+  const featuredArticles = articles
+    .filter((article: any) => article.data.is_featured === true)
+    .slice(0, limit ?? articles.length);
 
   return (
-    <main className="border-y border-[#7FA091]">
+    <section>
       <div className="container-main">
-        <section className="py-3 text-center md:py-4">
-          <h1
+        <div className="py-3 text-center md:py-4">
+          <h2
             className={`${playfair.className} text-[14px] font-bold leading-4.5 text-[#171D16] md:text-[18px] md:leading-5.5`}
           >
-            Featured Articles
-          </h1>
-        </section>
+            {title}
+          </h2>
+        </div>
 
         <div className="border-t border-[#7FA091]">
           {featuredArticles.map((article: any) => {
@@ -60,13 +68,19 @@ export default async function Home() {
                     className="flex min-h-55 min-w-0 flex-1 flex-col justify-between transition-opacity hover:opacity-80 min-[914px]:min-h-50"
                   >
                     <div>
-                      
+                      {article.data.category && (
+                        <p
+                          className={`${inter.className} mb-2 text-[11px] font-medium leading-3.5 text-[#1D604B] md:text-[12px] md:leading-4`}
+                        >
+                          {article.data.category}
+                        </p>
+                      )}
 
-                      <h2
+                      <h3
                         className={`${playfair.className} mb-2 text-[18px] font-bold leading-5.5 text-[#171D16] md:mb-3 md:text-[20px] md:leading-6`}
                       >
                         {article.data.title?.[0]?.text}
-                      </h2>
+                      </h3>
 
                       <p
                         className={`${inter.className} text-[13px] font-light leading-5 text-[#171D16] line-clamp-6 min-[680px]:line-clamp-7 min-[914px]:line-clamp-5 md:text-[14px] md:leading-5.5`}
@@ -96,6 +110,6 @@ export default async function Home() {
           })}
         </div>
       </div>
-    </main>
+    </section>
   );
 }
