@@ -1,0 +1,112 @@
+{
+  "format": "custom",
+  "id": "article",
+  "label": "Article",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "heading1"
+        }
+      },
+      "summary": {
+        "type": "StructuredText",
+        "config": {
+          "label": "summary",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "paragraph"
+        }
+      },
+      "thumbnail": {
+        "type": "Image",
+        "config": {
+          "label": "Thumbnail",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "featured_image": {
+        "type": "Image",
+        "config": {
+          "label": "Featured Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "published_at": {
+        "type": "Date",
+        "config": {
+          "label": "Published At",
+          "placeholder": ""
+        }
+      },
+      "is_featured": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Featured",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Body",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading2,heading3,strong,em,list-item,o-list-item"
+        }
+      },
+      "seo_title": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Title",
+          "placeholder": ""
+        }
+      },
+      "seo_description": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Description",
+          "placeholder": ""
+        }
+      },
+      "author": {
+        "type": "Text",
+        "config": {
+          "label": "Author",
+          "placeholder": ""
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "Category",
+          "placeholder": "",
+          "options": [
+            "Beach Travel",
+            "Eco Accommodation",
+            "Mountain Tourism",
+            "Wildlife",
+            "Eco Travel",
+            "Active Travel"
+          ]
+        }
+      }
+    }
+  }
+}
