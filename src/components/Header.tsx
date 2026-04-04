@@ -60,11 +60,11 @@ export function Header() {
           className="flex h-10 w-10 items-center justify-center md:hidden"
         >
           <Image
-            src={isOpen ? "/images/escape.svg" : "/images/hamburgerMenu.svg"}
+            src={isOpen ? "/images/Close.svg" : "/images/Menu.svg"}
             alt={isOpen ? "Close menu" : "Open menu"}
             width={24}
             height={24}
-            className="h-6 w-6"
+            className="h-6 w-6 cursor-pointer"
           />
         </button>
       </div>
