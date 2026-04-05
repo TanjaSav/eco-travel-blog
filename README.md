@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EcoTravelBlog
 
-## Getting Started
+EcoTravelBlog is a responsive blog about sustainable tourism, eco-friendly travel, and conscious exploration.  
+The project is built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Prismic CMS**.
 
-First, run the development server:
+---
+
+## Demo
+
+**Live Site:**  
+[https://eco-travel-blog-c56v.vercel.app](https://eco-travel-blog-c56v.vercel.app)
+
+---
+
+## Overview
+
+This project includes:
+
+- a homepage with featured articles
+- an articles page with all published posts
+- dynamic article pages generated from Prismic
+- an about page
+- responsive layout for desktop, tablet, and mobile
+- SEO setup with metadata, sitemap, and robots.txt
+
+---
+
+## Tech Stack
+
+- **Next.js**
+- **TypeScript**
+- **Tailwind CSS**
+- **Prismic**
+- **Vercel**
+
+---
+
+## Features
+
+### Homepage
+- Hero section
+- Featured articles section
+- Responsive layout
+
+### Articles Page
+- Articles sorted by publication date
+- Thumbnail image
+- Title, excerpt, author, and date
+- Read more link
+
+### Article Details
+- Dynamic article pages using Prismic content
+- Category, title, summary, featured image
+- Rich text article body
+- Author and publication date
+
+### About Page
+- Mission and vision
+- Why eco-friendly tourism matters
+- Main blog topics
+
+### SEO
+- Metadata for pages and articles
+- Dynamic SEO for article pages
+- `sitemap.xml`
+- `robots.txt`
+
+---
+
+## Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+src/
+  app/
+    about/
+      page.tsx
+    articles/
+      [uid]/
+        page.tsx
+      page.tsx
+    featured/
+      page.tsx
+    faq/
+      page.tsx
+    robots.ts
+    sitemap.ts
+    layout.tsx
+    page.tsx
+    globals.css
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  components/
+    FeaturedArticles.tsx
+    Footer.tsx
+    Header.tsx
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  prismicio.ts
+  fonts.ts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

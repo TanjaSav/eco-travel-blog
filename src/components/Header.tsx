@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { playfair } from "@/fonts";
 
+// Navigation items used in both desktop and mobile menus
 const nav = [
   { href: "/", label: "Home" },
   { href: "/articles", label: "Articles" },
@@ -16,16 +17,21 @@ export function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  // Determine if a navigation link is currently active
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
+  // Close mobile menu after clicking a link
   const closeMenu = () => setIsOpen(false);
 
   return (
+    // Sticky header with border and light background
     <header className="relative z-20 border-b border-[#7FA091] bg-[#F5F7F4]">
       <div className="container-main flex h-16 items-center justify-between">
+
+        {/* Logo linking back to homepage */}
         <Link href="/" onClick={closeMenu}>
           <Image
             src="/images/Logo.svg"
@@ -36,6 +42,7 @@ export function Header() {
           />
         </Link>
 
+        {/* Desktop navigation */}
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (
             <Link
@@ -43,8 +50,8 @@ export function Header() {
               href={item.href}
               className={`${playfair.className} text-[16px] leading-5 ${
                 isActive(item.href)
-                  ? "font-bold text-[#1D604B]"
-                  : "font-medium text-[#171D16]"
+                  ? "font-bold text-[#1D604B]"   // Active link styling
+                  : "font-medium text-[#171D16]" // Default link styling
               }`}
             >
               {item.label}
@@ -52,6 +59,7 @@ export function Header() {
           ))}
         </nav>
 
+        {/* Mobile menu toggle button */}
         <button
           type="button"
           aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -69,6 +77,7 @@ export function Header() {
         </button>
       </div>
 
+      {/* Mobile navigation menu */}
       {isOpen && (
         <div className="border-t border-[#7FA091] bg-[#F5F7F4] md:hidden">
           <nav className="container-main flex flex-col items-center py-4 text-center">
