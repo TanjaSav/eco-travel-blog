@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
 import { playfair, inter } from "@/fonts";
 import Link from "next/link";
+import { asText } from "@prismicio/client";
 
 type PageProps = {
   params: Promise<{
@@ -64,14 +65,14 @@ export default async function ArticlePage({ params }: PageProps) {
             <h1
               className={`${playfair.className} mb-5 max-w-225 text-[22px] font-bold leading-6.5 text-[#171D16] md:mb-6 md:text-[36px] md:leading-9.5`}
             >
-              {article.data.title?.[0]?.text}
+              {asText(article.data.title)}
             </h1>
 
             {/* Summary / subtitle */}
             <p
               className={`${playfair.className} mb-6 max-w-225 text-[14px] font-bold leading-4.5 text-[#374151] md:mb-8 md:text-[17px] md:leading-5.25`}
             >
-              {article.data.summary?.[0]?.text}
+              {asText(article.data.summary)}
             </p>
 
             {/* Featured image */}
@@ -80,7 +81,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 src={article.data.featured_image.url}
                 alt={
                   article.data.featured_image.alt ||
-                  article.data.title?.[0]?.text ||
+                  asText(article.data.title) ||
                   ""
                 }
                 width={780}

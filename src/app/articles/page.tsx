@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/prismicio";
 import { playfair, inter } from "@/fonts";
+import { asText } from "@prismicio/client";
 
 // Page metadata for SEO
 export const metadata = {
@@ -58,7 +59,7 @@ export default async function ArticlesPage() {
                         src={article.data.thumbnail.url}
                         alt={
                           article.data.thumbnail.alt ||
-                          article.data.title?.[0]?.text ||
+                          asText(article.data.title) ||
                           ""
                         }
                         width={300}
@@ -78,7 +79,7 @@ export default async function ArticlesPage() {
                       <h2
                         className={`${playfair.className} mb-2 text-[18px] font-bold leading-5.5 text-[#171D16] md:mb-3 md:text-[20px] md:leading-6`}
                       >
-                        {article.data.title?.[0]?.text}
+                        {asText(article.data.title)}
                       </h2>
 
                       {/* Article preview text with responsive line clamping */}
