@@ -8,7 +8,7 @@ The project is built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **P
 ## Demo
 
 **Live Site:**  
-https://eco-travel-blog-c56y-8t6zmxisg-tetyanas-projects-2355053c.vercel.app
+https://eco-travel-blog.vercel.app/
 
 ---
 
